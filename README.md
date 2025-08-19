@@ -1,37 +1,162 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Message Broker Portfolio Project
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This is a portfolio project designed to demonstrate and practice message broker concepts using modern technologies. The project serves as a practical learning exercise focusing on asynchronous communication patterns, message queuing, and distributed system architecture.
 
-## Description
+## Project Purpose
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The main objective of this project is to:
+- **Practice Message Broker Concepts**: Implement real-world messaging patterns using RabbitMQ
+- **Learn Asynchronous Communication**: Understand publisher-subscriber patterns, message queues, and event-driven architecture
+- **Apply SOLID Principles**: Demonstrate clean code practices and software design principles
+- **Modern Technology Stack**: Gain hands-on experience with cutting-edge development tools
 
-## Project setup
+## Technology Stack
 
-```bash
-$ npm install
+### Backend Framework
+- **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications
+- **TypeScript**: Strongly typed programming language that builds on JavaScript
+
+### Database & ORM
+- **PostgreSQL**: Advanced open-source relational database
+- **Prisma**: Next-generation ORM for type-safe database access
+
+### Message Broker
+- **RabbitMQ**: Robust message broker that supports multiple messaging protocols
+
+### Architecture Principles
+- **SOLID Principles**: Following clean code practices for maintainable and scalable software design
+  - **S**ingle Responsibility Principle
+  - **O**pen/Closed Principle
+  - **L**iskov Substitution Principle
+  - **I**nterface Segregation Principle
+  - **D**ependency Inversion Principle
+
+## Project Structure
+
+```
+message-broker-portfolio/
+├── docker-compose.yml          # Container orchestration
+├── package.json               # Project dependencies
+├── README.md                  # Project documentation
+├── src/                       # Source code
+├── prisma/                    # Database schema and migrations
+└── docs/                      # Additional documentation
 ```
 
-## Compile and run the project
+## Infrastructure Services
+
+### PostgreSQL Database
+- **Container Name**: `db`
+- **Port**: `5432`
+- **Database**: `messagebroker`
+- **Credentials**: `postgres/postgres`
+
+### RabbitMQ Message Broker
+- **Container Name**: `rmq`
+- **AMQP Port**: `5672`
+- **Management UI**: `http://localhost:15672`
+- **Credentials**: `admin/admin`
+
+## Getting Started
+
+### Prerequisites
+
+- **Docker & Docker Compose**: For running PostgreSQL and RabbitMQ containers
+- **Node.js** (v18 or higher): For running the NestJS application
+- **npm or yarn**: Package manager
+
+### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd message-broker-portfolio
+   ```
+
+2. **Start the infrastructure services**
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Set up the database**
+   ```bash
+   npx prisma migrate dev
+   npx prisma generate
+   ```
+
+5. **Start the development server**
+   ```bash
+   npm run start:dev
+   ```
+
+## Learning Objectives
+
+### Message Broker Concepts
+- **Queues**: Understanding FIFO message processing
+- **Exchanges**: Learning different routing mechanisms (direct, topic, fanout)
+- **Publishers & Consumers**: Implementing producer-consumer patterns
+- **Dead Letter Queues**: Handling failed message processing
+- **Message Acknowledgments**: Ensuring reliable message delivery
+
+### Software Architecture
+- **Event-Driven Architecture**: Building loosely coupled systems
+- **Microservices Communication**: Inter-service messaging patterns
+- **Error Handling**: Implementing robust error recovery mechanisms
+- **Performance Optimization**: Message batching and connection pooling
+
+### SOLID Principles Application
+- **Dependency Injection**: Using NestJS's IoC container
+- **Interface Segregation**: Creating focused, single-purpose interfaces
+- **Open/Closed Principle**: Extending functionality without modifying existing code
+- **Single Responsibility**: Each class/module has one reason to change
+
+## Features to Implement
+
+- [ ] **Basic Message Publishing**: Send messages to queues
+- [ ] **Message Consumption**: Process messages from queues
+- [ ] **Event-Driven Communication**: Implement publisher-subscriber patterns
+- [ ] **Database Integration**: Persist message metadata using Prisma
+- [ ] **Error Handling**: Implement retry mechanisms and dead letter queues
+- [ ] **Message Routing**: Different exchange types and routing patterns
+- [ ] **Monitoring**: Health checks and message tracking
+- [ ] **Testing**: Unit and integration tests for messaging flows
+
+## Development Guidelines
+
+### Code Style
+- Follow TypeScript best practices
+- Use ESLint and Prettier for code formatting
+- Implement comprehensive error handling
+- Write meaningful tests
+
+### Architecture
+- Apply SOLID principles consistently
+- Use dependency injection for loose coupling
+- Implement proper abstraction layers
+- Follow NestJS conventions and best practices
+
+## Project Setup
+
+```bash
+# Install dependencies
+$ npm install
+
+# Start infrastructure services
+$ docker-compose up -d
+
+# Set up database
+$ npx prisma migrate dev
+$ npx prisma generate
+```
+
+## Compile and Run the Project
 
 ```bash
 # development
@@ -44,7 +169,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+## Run Tests
 
 ```bash
 # unit tests
@@ -57,42 +182,25 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## Documentation
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- **API Documentation**: Auto-generated with Swagger/OpenAPI
+- **Database Schema**: Documented with Prisma schema comments
+- **Message Flows**: Documented messaging patterns and use cases
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Contributing
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+This is a learning project, but contributions and suggestions are welcome:
+1. Fork the repository
+2. Create a feature branch
+3. Follow the coding standards
+4. Add tests for new features
+5. Submit a pull request
 
 ## Resources
 
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- [NestJS Documentation](https://docs.nestjs.com/)
+- [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials.html)
+- [Prisma Documentation](https://www.prisma.io/docs/)
+- [SOLID Principles](https://en.wikipedia.org/wiki/SOLID)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
